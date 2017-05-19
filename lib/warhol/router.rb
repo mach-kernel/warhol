@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Warhol
   class Router
     include CanCan::Ability
     include Warhol::Support::Inflector
 
     def initialize(user)
-      return unless !!user
+      return if user.nil?
       @user = user
       apply_permissions
     end

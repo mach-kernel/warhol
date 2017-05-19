@@ -16,7 +16,11 @@ module Warhol
       private
 
       def register
-        Warhol::Config.ability_classes[demodulize(self.name)] = self
+        raise(
+          'Ability classes should implement .name if they are anonymous!'
+        ) if name.nil?
+
+        Warhol::Config.instance.ability_classes[demodulize(name)] = self
       end
     end
   end

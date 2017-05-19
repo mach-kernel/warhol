@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Warhol
   module Support
     module Inflector
@@ -8,6 +10,7 @@ module Warhol
       def underscore(str)
         tokens = str.split('::')
 
+        # rubocop:disable Style/Semicolon
         tokens.map! do |token|
           token.split('')
                .slice_when { |p, n| p =~ /[[:lower:]]/ && n =~ /[[:upper:]]/ }
@@ -15,6 +18,7 @@ module Warhol
                .inject('') { |m, a| next a.join if m.empty?; "#{m}_#{a.join}" }
                .downcase
         end
+        # rubocop:enable Style/Semicolon
 
         tokens.join('/')
       end

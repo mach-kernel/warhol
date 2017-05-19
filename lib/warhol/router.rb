@@ -14,11 +14,8 @@ module Warhol
     attr_reader :user
 
     def apply_permissions
-
-
-      Warhol::Config.ability_classes.each do |klass|
-        role_name = klass.name.split('::').last.
-        next unless 
+      (Warhol::Config.ability_classes & roles_to_apply).each do |k|
+        instance_exec(user, &Warhol::Config.ability_classes[k].permissions)
       end
     end
 

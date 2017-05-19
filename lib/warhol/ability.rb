@@ -3,6 +3,8 @@
 module Warhol
   class Ability
     class << self
+      include Warhol::Support::Inflector
+
       attr_reader :permissions
 
       def define_permissions(&block)
@@ -14,7 +16,7 @@ module Warhol
       private
 
       def register
-        Warhol::Config.ability_classes << self
+        Warhol::Config.ability_classes[demodulize(self.name)] = self
       end
     end
   end

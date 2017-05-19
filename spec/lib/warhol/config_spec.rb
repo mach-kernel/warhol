@@ -15,7 +15,7 @@ describe Warhol::Config do
 
   context '#ability_classes' do
     it 'is the correct type' do
-      expect(subject.ability_classes).to be_an(Array)
+      expect(subject.ability_classes).to be_a(Hash)
     end
   end
 

@@ -21,7 +21,7 @@ module Warhol
 
     def method_missing(sym, *args, &_block)
       return super unless respond_to_missing?(sym)
-      
+
       method_str = sym.to_s
       return store[method_str.to_sym] unless method_str.include?('=')
       store[method_str.delete('=').to_sym] = args.first
@@ -31,7 +31,7 @@ module Warhol
 
     def store
       @store ||= {
-        ability_classes: [],
+        ability_classes: {},
         ability_parent: Object,
         role_accessor: :roles,
         role_proc: nil

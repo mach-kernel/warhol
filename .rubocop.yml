@@ -1,0 +1,22 @@
+AllCops:
+  DisplayCopNames: true
+  Exclude: 
+    - Gemfile
+    - Guardfile
+    - ./spec/**/*
+    - warhol.gemspec
+
+Style/Documentation:
+  Enabled: false
+
+Lint/Debugger:
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 150

@@ -1,6 +1,6 @@
 # warhol
 
-A dbetter way to do [CanCanCan](https://github.com/CanCanCommunity/cancancan) [`Ability` classes](https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities). Written in pure Ruby with `cancancan` as its only dependency.
+A better way to do [CanCanCan](https://github.com/CanCanCommunity/cancancan) [`Ability` classes](https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities). Written in pure Ruby with `cancancan` as its only dependency.
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ For small applications, this is simple and clear. However, in practice, some of 
 
 ### Quick Start
 
-Specify a method on your domain object (for many, an `ActiveRecord` or `Mongoid` model, but any PORO is fine) returning an array of strings, one for each role. Warhol then takes those strings and matches them up to your defined ability classes, applying the access permissions you defined there. Matching is performed on the names of the `Warhol::Ability` subclass, excluding its namespace. Here is a database-backed example inspired by the above snippet from CanCan's official docs:
+Specify a method on your domain object (for many, an `ActiveRecord` or `Mongoid` model, but any PORO is fine) returning an array of strings, one for each role. Warhol then takes those strings and matches them up to your defined ability classes, applying the access permissions you defined there. Matching is performed on the names of the `Warhol::Ability` subclass, excluding their namespaces. Here is a database-backed example inspired by the above snippet from CanCan's official docs:
 
 First, some quick configuration. In a Rails project, we suggest this is placed in an initializer:
 

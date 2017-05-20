@@ -8,4 +8,6 @@ module Warhol
   autoload :Config,  'warhol/config'
   autoload :Router,  'warhol/router'
   autoload :Support, 'warhol/support'
+
+  Object.const_set(:Ability, Warhol::Router)
 end

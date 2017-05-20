@@ -30,6 +30,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
+  gem.add_dependency('cancancan')
+
   gem.add_development_dependency('bundler')
   gem.add_development_dependency('codeclimate-test-reporter')
   gem.add_development_dependency('guard')

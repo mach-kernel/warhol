@@ -20,7 +20,8 @@ module Warhol
           'Ability classes should implement .name if they are anonymous!'
         ) if name.nil?
 
-        Warhol::Config.instance.ability_classes[demodulize(name)] = self
+        Warhol::Config.instance
+                      .ability_classes[demodulize(name).downcase] = self
       end
     end
   end

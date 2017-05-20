@@ -3,15 +3,17 @@
 module Warhol
   class Config
     class << self
-      attr_reader :instance
-
       def new(&block)
         @instance = super(&block)
       end
+
+      def instance
+        @instance ||= new
+      end
     end
 
-    def initialize
-      yield(self)
+    def initialize(&block)
+      yield(self) unless block.nil?
     end
 
     # Allow to receive field= too

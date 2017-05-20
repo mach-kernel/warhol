@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'cancancan'
 require 'warhol/version'
 
 module Warhol

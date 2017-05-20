@@ -5,6 +5,7 @@ module Warhol
   class Config
     class << self
       def new(&block)
+        return @instance unless @instance.nil?
         @instance = super(&block)
       end
 

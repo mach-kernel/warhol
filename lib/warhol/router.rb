@@ -24,15 +24,16 @@ module Warhol
     private
 
     def apply_permissions
-      Warhol::Config.instance
-                    .ability_classes
-                    .keys
-                    .map(&:downcase) & roles_to_apply.each do |k|
-                      instance_exec(
-                        user, 
-                        &Warhol::Config.instance.ability_classes[k].permissions
-                      )
-                    end
+      Warhol::Config
+        .instance
+        .ability_classes
+        .keys
+        .map(&:downcase) & roles_to_apply.map(&:downcase).each do |k|
+          instance_exec(
+            user, 
+            &Warhol::Config.instance.ability_classes[k].permissions
+          )
+        end
     end
   end
 end

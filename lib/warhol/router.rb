@@ -30,7 +30,7 @@ module Warhol
         .keys
         .map(&:downcase) & roles_to_apply.map(&:downcase).each do |k|
           instance_exec(
-            user, 
+            user,
             &Warhol::Config.instance.ability_classes[k].permissions
           )
         end

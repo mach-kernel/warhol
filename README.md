@@ -1,6 +1,6 @@
 # warhol
 
-[![Code Climate](https://codeclimate.com/github/mach-kernel/warhol.png)](https://codeclimate.com/github/mach-kernel/warhol) ![CircleCI](https://circleci.com/gh/mach-kernel/warhol.svg?style=shield&circle-token=00f71ed6911aab669bda9ff2432ca6c66d54a5e0)
+[![Code Climate](https://codeclimate.com/github/mach-kernel/warhol.png)](https://codeclimate.com/github/mach-kernel/warhol) ![CircleCI](https://circleci.com/gh/mach-kernel/warhol.svg?style=shield&circle-token=00f71ed6911aab669bda9ff2432ca6c66d54a5e0) [![Test Coverage](https://codeclimate.com/github/mach-kernel/warhol/badges/coverage.svg)](https://codeclimate.com/github/mach-kernel/warhol/coverage)
 
 A better way to do [CanCanCan](https://github.com/CanCanCommunity/cancancan) [`Ability` classes](https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities). Written in pure Ruby with `cancancan` as its only dependency.
 

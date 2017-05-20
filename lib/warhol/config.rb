@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 module Warhol
@@ -35,7 +36,7 @@ module Warhol
       @store ||= {
         ability_classes: {},
         ability_parent: Object,
-        role_accessor: :roles,
+        role_accessor: nil,
         role_proc: nil
       }
     end

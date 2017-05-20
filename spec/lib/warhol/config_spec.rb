@@ -37,7 +37,7 @@ describe Warhol::Config do
 
   context '#role_accessor' do
     it 'has the correct default' do
-      expect(subject.role_accessor).to eql(:roles)
+      expect(subject.role_accessor).to eql(nil)
     end
 
     context '=' do

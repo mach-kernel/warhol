@@ -4,6 +4,8 @@
 
 A better way to do [CanCanCan](https://github.com/CanCanCommunity/cancancan) [`Ability` classes](https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities). Written in pure Ruby with `cancancan` as its only dependency.
 
+<img height="300px" src="https://raw.github.com/mach-kernel/warhol/master/splash.jpg" />
+
 ## Getting Started
 
 ### Motivations
@@ -34,6 +36,8 @@ Specify a method on your domain object (for many, an `ActiveRecord` or `Mongoid`
 
 First, some quick configuration. In a Rails project, we suggest this is placed in an initializer:
 
+#### Initializer
+
 ```ruby
 require 'warhol'
 
@@ -42,6 +46,8 @@ Warhol::Config.new do |warhol|
   warhol.role_accessor = :role_names
 end
 ```
+
+#### The Domain Object
 
 The domain object can look like this: 
 
@@ -54,6 +60,8 @@ class User << ActiveRecord::Base
   end
 end
 ```
+
+#### Definitions
 
 Some abilities:
 
@@ -75,6 +83,7 @@ end
 ```
 
 Now, we just check the role. People using Rails can just invoke `can?` from their controller instead of explicitly making a new `Ability` class:
+
 ```
 user
 puts user.role_names

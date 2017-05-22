@@ -35,6 +35,22 @@ describe Warhol::Config do
     end
   end
 
+  context '#additional_accessors' do
+    it 'has the correct default' do
+      expect(subject.additional_accessors).to be_an(Array)
+    end
+
+    context '=' do
+      let(:new_value) { %w(foo bar) }
+
+      before { subject.additional_accessors = new_value }
+
+      it 'is assignable' do
+        expect(subject.additional_accessors).to eql(new_value)
+      end
+    end
+  end
+
   context '#role_accessor' do
     it 'has the correct default' do
       expect(subject.role_accessor).to eql(nil)

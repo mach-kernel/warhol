@@ -39,13 +39,36 @@ describe Warhol::Router do
     before do
       allow_any_instance_of(described_class).to receive(:apply_permissions)
         .and_return(true)
+
+      allow_any_instance_of(described_class).to receive(:decorate_accessors)
+        .and_return(true)
     end
 
     context '#initialize' do
       it 'performs the correct lifecycle events' do
         expect(subject).to have_received(:apply_permissions)
-        expect(subject.user).to eql(user)
+        expect(subject.object).to eql(user)
       end
+
+      context 'with additional accessors defined' do
+        let(:addl_accessors) { %w(foo bar baz) }
+
+        before do 
+          allow(config).to receive(:additional_accessors).and_return(
+            addl_accessors
+          )
+
+          allow_any_instance_of(described_class).to receive(:decorate_accessors)
+            .and_call_original
+        end
+
+        it 'should respond to the new accessors' do
+          addl_accessors.each do |aa|
+            expect(subject).to receive(aa.to_sym).and_call_original
+            expect(subject.send(aa)).to eql(user)
+          end
+        end
+      end 
     end
 
     context '#roles_to_apply' do

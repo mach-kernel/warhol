@@ -37,6 +37,7 @@ module Warhol
       @store ||= {
         ability_classes: {},
         ability_parent: Object,
+        additional_accessors: %w(),
         role_accessor: nil,
         role_proc: nil
       }

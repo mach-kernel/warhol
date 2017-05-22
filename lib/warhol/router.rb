@@ -42,7 +42,7 @@ module Warhol
     def decorate_accessors
       self.class.instance_exec(
         Warhol::Config.instance.additional_accessors
-      ) { |a| a.each { |m| alias_method m.to_sym, :object } } 
+      ) { |a| a.each { |m| alias_method m.to_sym, :object } }
     end
   end
 end

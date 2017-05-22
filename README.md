@@ -44,6 +44,9 @@ require 'warhol'
 Warhol::Config.new do |warhol|
   # This is the method we invoke below
   warhol.role_accessor = :role_names
+
+  # Exposes a basic attr_reader. More below.
+  warhol.additional_accessors = ['user']
 end
 ```
 
@@ -70,7 +73,10 @@ class Administrator < Warhol::Ability
   define_permissions do
     can :manage, :all
 
-    # User is included in scope
+    # object is always included in scope
+    can :other_condition, user_id: object.id
+
+    # user via additional accessor
     can :thing_with_condition, user_id: user.id
   end
 end
@@ -93,6 +99,23 @@ puts Ability.new(user).can? :manage, @something
 ```
 
 That's it!
+
+### Config Options
+
+To configure Warhol, we create a new singleton configuration class. Every time you invoke `::new`, the instance is replaced with the one you most recently defined. 
+
+```ruby
+Warhol::Config.new do |warhol|
+  warhol.option = value
+end
+```
+| Key                      | Type          | Description                                                                                                                                                                                                                                           |
+|--------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ability_parent           | Module        | The parent object under which to define the `Ability` constant.                                                                                                                                                                                       |
+| additional_accessors     | Array[String] | By default, inside the `define_permissions` block you can access the object you are performing the check on by invoking `object`. For the example use case of applying user permissions, passing `%w(user)` may not be a bad idea.                    |
+| role_accessor (REQUIRED) | Symbol        | Accessor used to fetch roles from domain object.                                                                                                                                                                                                      |
+| role_proc                | Proc          | If you do not wish to define an accessor, you can pass a block with an arity of 1; the object you are performing the check against will be passed as an argument allowing you to either implement the logic here or delegate it to a service object.  |
+
 
 ### Advanced Usage
 

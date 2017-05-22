@@ -5,6 +5,7 @@ module Warhol
     include ::CanCan::Ability
     include Warhol::Support::Inflector
 
+    # Generally a user object, but can be any PORO
     attr_reader :object
 
     def initialize(object)

@@ -2,11 +2,11 @@ describe Warhol::Router do
   let(:user) { double }
   let(:config) { double }
 
-  subject { described_class.new(user) }
-
   before do
     allow(Warhol::Config).to receive(:instance).and_return(config)
   end
+
+  subject { described_class.new(user) }
 
   context 'role lifecycle' do
     let!(:role_a) { class Foo < Warhol::Ability; end; Foo }
@@ -22,6 +22,8 @@ describe Warhol::Router do
 
       allow(config).to receive(:role_proc).and_return(nil)
       allow(config).to receive(:role_accessor).and_return(:roles)
+      allow_any_instance_of(described_class).to receive(:decorate_accessors)
+        .and_return(true)
 
       allow(user).to receive(:roles).and_return(%w(foo))
       allow(role_a).to receive(:permissions).and_return(permission_proc)

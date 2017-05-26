@@ -55,7 +55,7 @@ end
 The domain object can look like this: 
 
 ```ruby
-class User << ActiveRecord::Base
+class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
 
   def role_names
